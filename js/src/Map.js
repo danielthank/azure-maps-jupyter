@@ -280,6 +280,14 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
           subscriptionKey
         }
       });
+      this.obj.controls.add([
+          new atlas.control.ZoomControl(),
+          new atlas.control.CompassControl(),
+          new atlas.control.PitchControl(),
+          new atlas.control.StyleControl()
+      ], {
+          position: "top-right"
+      });
     });
   }
 
@@ -396,14 +404,17 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
           // animation triggers a `moveend` event in an animationFrame,
           // which causes the center to bounce despite of the dirty flag
           // which is set back to false synchronously.
-          this.obj.flyTo(this.model.get('center'), this.model.get('zoom'), {
-            animate: false,
+          this.obj.setCamera({
+            zoom: this.model.get('zoom')
           });
           this.dirty = false;
         }
+        // TODO: change to Azure Maps equivalent
+        /*
         this.model.update_bounds().then(() => {
           this.touch();
         });
+        */
       },
       this
     );
