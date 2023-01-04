@@ -4,7 +4,7 @@
 const widgets = require('@jupyter-widgets/base');
 const L = require('./leaflet.js');
 const utils = require('./utils.js');
-const proj = require('./projections.js');
+const atlas = require('azure-maps-control');
 
 const DEFAULT_LOCATION = [0.0, 0.0];
 
@@ -219,6 +219,7 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
     this.el.classList.add('jupyter-widgets');
     this.el.classList.add('leaflet-widgets');
     this.map_container = document.createElement('div');
+    this.map_container.id = "azure-maps";
     this.map_child = this.el.appendChild(this.map_container);
     if (this.get_options().interpolation == 'nearest') {
       this.map_container.classList.add('crisp-image');
@@ -253,13 +254,25 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
 
   create_obj() {
     return this.layoutPromise.then(() => {
+      /*
       var options = {
         ...this.get_options(),
         crs: proj.getProjection(this.model.get('crs')),
         zoomControl: false,
         attributionControl: false,
       };
-      this.obj = L.map(this.map_container, options);
+      */
+      // this.obj = L.map(this.map_container, options);
+      const { center, zoom, subscriptionKey } = this.get_options();
+      this.obj = new atlas.Map("azure-maps", {
+        center,
+        zoom,
+        view: "Auto",
+        authOptions: {
+          authType: "subscriptionKey",
+          subscriptionKey
+        }
+      });
     });
   }
 
