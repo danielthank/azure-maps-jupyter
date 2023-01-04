@@ -120,7 +120,8 @@ export class LeafletMapModel extends widgets.DOMWidgetModel {
           var pixbnds = bnds_pixbnds[1];
           var obj = views[key].obj;
           if (obj) {
-            var view_bounds = obj.getBounds();
+            // TODO: change to Azure Maps equivalent
+            // var view_bounds = obj.getBounds();
             bnds.north = Math.max(bnds.north, view_bounds.getNorth());
             bnds.south = Math.min(bnds.south, view_bounds.getSouth());
             bnds.east = Math.max(bnds.east, view_bounds.getEast());
@@ -186,7 +187,8 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
     return this.create_child_view(child_model, {
       map_view: this,
     }).then((view) => {
-      this.obj.addLayer(view.obj);
+      // TODO: change to Azure Maps equivalent
+      // this.obj.addLayer(view.obj);
 
       this.displayed.then(() => {
         view.trigger('displayed', this);
@@ -204,7 +206,8 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
     return this.create_child_view(child_model, {
       map_view: this,
     }).then((view) => {
-      this.obj.addControl(view.obj);
+      // TODO: change to Azure Maps equivalent
+      // this.obj.addControl(view.obj);
 
       // Trigger the displayed event of the child view.
       this.displayed.then(() => {
@@ -222,7 +225,7 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
     this.map_container.id = "azure-maps";
     this.map_child = this.el.appendChild(this.map_container);
     if (this.get_options().interpolation == 'nearest') {
-      this.map_container.classList.add('crisp-image');
+      // this.map_container.classList.add('crisp-image');
     }
     this.layer_views = new widgets.ViewList(
       this.add_layer_model,
@@ -242,11 +245,15 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
       this.create_panes();
       this.layer_views.update(this.model.get('layers'));
       this.control_views.update(this.model.get('controls'));
-      this.leaflet_events();
+      // change to azure maps events
+      // this.leaflet_events();
       this.model_events();
+      // TODO: update to Azure Maps equivalent
+      /*
       this.model.update_bounds().then(() => {
         this.touch();
       });
+      */
 
       return this;
     });
@@ -406,12 +413,17 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
       function () {
         if (!this.dirty) {
           this.dirty = true;
-          this.obj.panTo(this.model.get('center'));
+          this.obj.setCamera({
+            center: this.model.get('center')
+          });
           this.dirty = false;
         }
+        // TODO: change to Azure Maps equivalent
+        /*
         this.model.update_bounds().then(() => {
           this.touch();
         });
+        */
       },
       this
     );
@@ -471,18 +483,22 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
         // to sub-pixel differences)
         // `pan=false` corresponds to having to top-left corner
         // unchanged.
+        /* TODO: change to Azure Maps corresponding function
         this.obj.invalidateSize({
           animate: false,
           pan: true,
         });
+        */
         this.dirty = false;
         break;
       case 'after-show':
         this.dirty = true;
+        /* TODO: change to Azure Maps corresponding function
         this.obj.invalidateSize({
           animate: false,
           pan: true,
         });
+        */
         this.dirty = false;
         break;
     }

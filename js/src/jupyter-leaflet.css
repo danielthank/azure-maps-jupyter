@@ -2,7 +2,7 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-.leaflet-container {
+#azure-maps {
   height: 100%;
   width: 100%;
 }

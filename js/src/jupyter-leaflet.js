@@ -61,4 +61,4 @@ require('leaflet.awesome-markers/dist/leaflet.awesome-markers.css');
 require('spin.js/spin.css');
 require('./jupyter-leaflet.css');
 require('leaflet-search/dist/leaflet-search.src.css');
-// require('azure-maps-control/dist/atlas.min.css')
+require('azure-maps-control/dist/atlas.min.css');
