@@ -246,7 +246,7 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
       this.layer_views.update(this.model.get('layers'));
       this.control_views.update(this.model.get('controls'));
       // change to azure maps events
-      // this.leaflet_events();
+      this.leaflet_events();
       this.model_events();
       // TODO: update to Azure Maps equivalent
       /*
@@ -299,37 +299,39 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
   }
 
   leaflet_events() {
-    this.obj.on('moveend', (e) => {
+    this.obj.events.add("moveend", () => {
       if (!this.dirty) {
         this.dirty = true;
-        var c = e.target.getCenter();
-        this.model.set('center', [c.lat, c.lng]);
+        const [lon, lat] = this.obj.getCamera().center;
+        this.model.set('center', [lon, lat]);
         this.dirty = false;
       }
+      this.touch();
+      /*
       this.model.update_bounds().then(() => {
         this.touch();
       });
+      */
       this.model._dragging = false;
       this.model.update_style();
-    });
+    })
 
-    this.obj.on('movestart', () => {
+    this.obj.events.add('movestart', () => {
       this.model._dragging = true;
       this.model.update_style();
     });
 
-    this.obj.on('zoomend', (e) => {
+    this.obj.events.add('zoomend', () => {
       if (!this.dirty) {
         this.dirty = true;
-        var z = e.target.getZoom();
-        this.model.set('zoom', z);
+        const { zoom } = this.obj.getCamera();
+        this.model.set('zoom', zoom);
         this.dirty = false;
       }
-      this.model.update_bounds().then(() => {
-        this.touch();
-      });
+      this.touch();
     });
 
+    /*
     this.obj.on(
       'click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu preclick',
       (event) => {
@@ -345,6 +347,7 @@ export class LeafletMapView extends utils.LeafletDOMWidgetView {
     this.obj.on('fullscreenchange', () => {
       this.model.set('fullscreen', this.obj.isFullscreen());
     });
+    */
   }
 
   model_events() {
