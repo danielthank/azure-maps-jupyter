@@ -29,12 +29,12 @@ jobs:
       uses: conda-incubator/setup-miniconda@v2
       with:
         environment-file: environment-dev.yml
-        activate-environment: ipyleaflet-dev
+        activate-environment: azure_maps_jupyter-dev
         mamba-version: "*"
         python-version: ${{ matrix.python-version }}
         channels: conda-forge
 
-    - name: Install ipyleaflet
+    - name: Install azure_maps_jupyter
       run: pip install . --no-deps
 
     - name: Check installation files
@@ -46,7 +46,7 @@ jobs:
         test -f $CONDA_PREFIX/share/jupyter/labextensions/jupyter-leaflet/package.json
 
     - name: Python Linters
-      run: flake8 ipyleaflet --ignore=E501,E731
+      run: flake8 azure_maps_jupyter --ignore=E501,E731
 
     - name: JS Linters
       run: |
@@ -55,4 +55,4 @@ jobs:
       working-directory: js
 
     - name: Import check
-      run: python -c 'import ipyleaflet'
+      run: python -c 'import azure_maps_jupyter'

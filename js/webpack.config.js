@@ -31,7 +31,7 @@ module.exports = [
     entry: './src/extension.js',
     output: {
       filename: 'extension.js',
-      path: path.resolve(__dirname, '..', 'ipyleaflet', 'nbextension'),
+      path: path.resolve(__dirname, '..', 'azure_maps_jupyter', 'nbextension'),
       libraryTarget: 'amd',
     },
     resolve: resolve,
@@ -45,7 +45,7 @@ module.exports = [
     entry: ['./amd-public-path.js', './src/notebook.js'],
     output: {
       filename: 'index.js',
-      path: path.resolve(__dirname, '..', 'ipyleaflet', 'nbextension'),
+      path: path.resolve(__dirname, '..', 'azure_maps_jupyter', 'nbextension'),
       libraryTarget: 'amd',
       publicPath: '', // Set in amd-public-path.js
     },

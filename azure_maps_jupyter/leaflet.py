@@ -46,7 +46,7 @@ def basemap_to_tiles(basemap, day=yesterday, **kwargs):
     Parameters
     ----------
     basemap : class:`xyzservices.lib.TileProvider` or Dict
-        Basemap description coming from ipyleaflet.basemaps.
+        Basemap description coming from azure_maps_jupyter.basemaps.
     day: string
         If relevant for the chosen basemap, you can specify the day for
         the tiles in the "%Y-%m-%d" format. Defaults to yesterday's date.
@@ -110,7 +110,7 @@ class InteractMixin(object):
 class Layer(Widget, InteractMixin):
     """Abstract Layer class.
 
-    Base class for all layers in ipyleaflet.
+    Base class for all layers in azure_maps_jupyter.
 
     Attributes
     ----------
@@ -683,7 +683,7 @@ class WMSLayer(TileLayer):
         WMS image format (use `'image/png'` for layers with transparency).
     transparent: boolean, default False
         If true, the WMS service will return images with transparency.
-    crs: dict, default ipyleaflet.projections.EPSG3857
+    crs: dict, default azure_maps_jupyter.projections.EPSG3857
         Projection used for this WMS service.
     """
 
@@ -871,7 +871,7 @@ class ImageService(Layer):
         - ``"Esri"``
     attribution: string, default ""
         include image service attribution
-    crs: dict, default ipyleaflet.projections.EPSG3857
+    crs: dict, default azure_maps_jupyter.projections.EPSG3857
         projection used for this image service.
     interactive: bool, default False
         emit when clicked for registered callback
@@ -1657,7 +1657,7 @@ class ControlException(TraitError):
 class Control(Widget):
     """Control abstract class.
 
-    This is the base class for all ipyleaflet controls. A control is additional
+    This is the base class for all azure_maps_jupyter controls. A control is additional
     UI components on top of the Map.
 
     Attributes
@@ -2037,7 +2037,7 @@ class AttributionControl(Control):
     _view_name = Unicode('LeafletAttributionControlView').tag(sync=True)
     _model_name = Unicode('LeafletAttributionControlModel').tag(sync=True)
 
-    prefix = Unicode('ipyleaflet').tag(sync=True, o=True)
+    prefix = Unicode('azure_maps_jupyter').tag(sync=True, o=True)
 
 
 class LegendControl(Control):
@@ -2068,7 +2068,7 @@ class LegendControl(Control):
 
     def __init__(self, legend, *args, **kwargs):
         kwargs["legend"] = legend
-        # For backwards compatibility with ipyleaflet<=0.16.0
+        # For backwards compatibility with azure_maps_jupyter<=0.16.0
         if 'name' in kwargs:
             warnings.warn("the name argument is deprecated, use title instead", DeprecationWarning)
             kwargs.setdefault('title', kwargs['name'])
@@ -2284,7 +2284,7 @@ class MapStyle(Style, Widget):
 class Map(DOMWidget, InteractMixin):
     """Map class.
 
-    The Map class is the main widget in ipyleaflet.
+    The Map class is the main widget in azure_maps_jupyter.
 
     Attributes
     ----------

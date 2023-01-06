@@ -1,4 +1,4 @@
-name: ipyleaflet-dev
+name: azure_maps_jupyter-dev
 channels:
   - conda-forge
 dependencies:

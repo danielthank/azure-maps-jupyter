@@ -2,7 +2,7 @@
 
 1. Clone new copy of repository:
    ```sh
-   git clone git@github.com:jupyter-widgets/ipyleaflet.git
+   git clone git@github.com:jupyter-widgets/azure_maps_jupyter.git
    ```
 2. Update the version numbers in the following files (see https://github.com/jupyter-widgets/ipyleaflet/commit/48f3cb68cd07e6c4ae7b353a17861e4e51ca4471)
    - `ipyleaflet/_version.py` (two places)
