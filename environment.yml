@@ -1,9 +1,9 @@
 
-name: ipyleaflet
+name: azure_maps_jupyter
 channels:
   - conda-forge
 dependencies:
-  - ipyleaflet=0.17
+  - azure_maps_jupyter=0.17
   - scipy
   - bqplot
   - rasterio

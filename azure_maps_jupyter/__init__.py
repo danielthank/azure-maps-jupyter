@@ -5,7 +5,7 @@
 import sys
 from ._version import version_info, __version__  # noqa
 
-# Allow dependencies to ipyleaflet to not be installed upon post-link for
+# Allow dependencies to azure_maps_jupyter to not be installed upon post-link for
 # conda-build.
 
 try:

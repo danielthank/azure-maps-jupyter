@@ -69,7 +69,7 @@ master_doc = 'index'
 source_suffix = '.rst'
 
 # General information about the project.
-project = 'ipyleaflet'
+project = 'azure_maps_jupyter'
 copyright = '(c) Jupyter Development Team'
 author = 'Jupyter Development Team'
 

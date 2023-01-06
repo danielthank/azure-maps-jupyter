@@ -13,25 +13,25 @@ from jupyter_packaging import (
 )
 
 # the name of the package
-name = 'ipyleaflet'
+name = 'azure_maps_jupyter'
 long_description = 'A Jupyter widget for dynamic Leaflet maps'
 
 here = os.path.dirname(os.path.abspath(__file__))
 
-# Get ipyleaflet version
+# Get azure_maps_jupyter version
 version = get_version(os.path.join(name, '_version.py'))
 
 js_dir = os.path.join(here, 'js')
 
 # Representative files that should exist after a successful build
 jstargets = [
-    os.path.join('ipyleaflet/nbextension', 'index.js'),
-    os.path.join('ipyleaflet/labextension', 'package.json'),
+    os.path.join('azure_maps_jupyter/nbextension', 'index.js'),
+    os.path.join('azure_maps_jupyter/labextension', 'package.json'),
 ]
 
 data_files_spec = [
-    ('share/jupyter/nbextensions/jupyter-leaflet', 'ipyleaflet/nbextension', '*.*'),
-    ('share/jupyter/labextensions/jupyter-leaflet', 'ipyleaflet/labextension', "**"),
+    ('share/jupyter/nbextensions/jupyter-leaflet', 'azure_maps_jupyter/nbextension', '*.*'),
+    ('share/jupyter/labextensions/jupyter-leaflet', 'azure_maps_jupyter/labextension', "**"),
     ('etc/jupyter/nbconfig/notebook.d', '.', 'jupyter-leaflet.json'),
 ]
 
@@ -47,7 +47,7 @@ else:
     cmdclass['jsdeps'] = skip_if_exists(jstargets, js_command)
 
 setup_args = dict(
-    name=name,
+    name="azure-maps-jupyter",
     version=version,
     description='A Jupyter widget for dynamic Leaflet maps',
     long_description=long_description,

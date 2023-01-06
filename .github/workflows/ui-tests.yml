@@ -23,12 +23,12 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           environment-file: environment-dev.yml
-          activate-environment: ipyleaflet-dev
+          activate-environment: azure_maps_jupyter-dev
           mamba-version: "*"
           python-version: ${{ matrix.python-version }}
           channels: conda-forge
 
-      - name: Install ipyleaflet
+      - name: Install azure_maps_jupyter
         run: pip install . --no-deps
 
       - name: Install browser
@@ -55,7 +55,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: ipyleaflet-test-assets
+          name: azure_maps_jupyter-test-assets
           path: |
             ui-tests/test-results
 
@@ -63,7 +63,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: ipyleaflet-test-report
+          name: azure_maps_jupyter-test-report
           path: |
             ui-tests/playwright-report
 

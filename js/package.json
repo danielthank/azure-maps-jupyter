@@ -17,7 +17,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack && jupyter labextension build .",
-    "clean": "rimraf dist/ && rimraf ../ipyleaflet/labextension/ && rimraf ../ipyleaflet/nbextension",
+    "clean": "rimraf dist/ && rimraf ../azure_maps_jupyter/labextension/ && rimraf ../azure_maps_jupyter/nbextension",
     "prepublish": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "run-p watch:src watch:labextension",
@@ -70,7 +70,7 @@
   },
   "jupyterlab": {
     "extension": "src/jupyterlab-plugin",
-    "outputDir": "../ipyleaflet/labextension",
+    "outputDir": "../azure_maps_jupyter/labextension",
     "webpackConfig": "webpack.lab.config.js",
     "sharedPackages": {
       "@jupyter-widgets/base": {

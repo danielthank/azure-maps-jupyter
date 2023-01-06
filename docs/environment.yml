@@ -1,4 +1,4 @@
-name: ipyleaflet-docs
+name: azure_maps_jupyter-docs
 
 channels:
   - conda-forge
